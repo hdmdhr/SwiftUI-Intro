@@ -13,6 +13,7 @@
 		22429AD42714FAEE002DA7CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22429AD32714FAEE002DA7CF /* Preview Assets.xcassets */; };
 		22429AD62714FAEE002DA7CF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22429AD52714FAEE002DA7CF /* Persistence.swift */; };
 		22429AD92714FAEE002DA7CF /* SwiftUI_Intro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22429AD72714FAEE002DA7CF /* SwiftUI_Intro.xcdatamodeld */; };
+		22429AE12714FC65002DA7CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22429AE02714FC65002DA7CF /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		22429AD52714FAEE002DA7CF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		22429AD82714FAEE002DA7CF /* SwiftUI_Intro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftUI_Intro.xcdatamodel; sourceTree = "<group>"; };
 		22429ADA2714FAEE002DA7CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22429AE02714FC65002DA7CF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				22429ACC2714FAEC002DA7CF /* SwiftUI_IntroApp.swift */,
 				22429ACE2714FAEC002DA7CF /* ContentView.swift */,
+				22429AE02714FC65002DA7CF /* Constants.swift */,
 				22429AD02714FAEE002DA7CF /* Assets.xcassets */,
 				22429AD52714FAEE002DA7CF /* Persistence.swift */,
 				22429ADA2714FAEE002DA7CF /* Info.plist */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22429AE12714FC65002DA7CF /* Constants.swift in Sources */,
 				22429AD92714FAEE002DA7CF /* SwiftUI_Intro.xcdatamodeld in Sources */,
 				22429AD62714FAEE002DA7CF /* Persistence.swift in Sources */,
 				22429ACF2714FAEC002DA7CF /* ContentView.swift in Sources */,
