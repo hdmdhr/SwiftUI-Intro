@@ -17,10 +17,18 @@ final class HttpClient {
     private let urlSession: URLSession
     
     func networkRequestPublisher<Response: Decodable>(url: URL,
-                                                      method: HttpRawMethod,
+                                                      method: HttpMethod,
                                                       jsonDecoder: JSONDecoder = .init()) -> AnyPublisher<Response, Error>
     {
-        urlSession.dataTaskPublisher(for: url)
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = method.httpMethod
+        
+        // body
+        if case let .mutable(bodyDataProvider, _) = method {
+            urlRequest.httpBody = try? bodyDataProvider.bodyData()
+        }
+        
+        return urlSession.dataTaskPublisher(for: urlRequest)
             .map(\.data)
             .decode(type: Response.self, decoder: jsonDecoder)
             .eraseToAnyPublisher()

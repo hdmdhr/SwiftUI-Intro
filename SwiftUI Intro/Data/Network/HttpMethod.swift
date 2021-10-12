@@ -13,3 +13,16 @@ enum HttpRawMethod: String {
 }
 
 
+enum HttpMethod {
+    case get
+    case mutable(bodyDataProvider: ABodyDataProvider, method: HttpRawMethod)
+    
+    var httpMethod: String {
+        switch self {
+        case .get:
+            return HttpRawMethod.GET.rawValue
+        case let .mutable(_, method):
+            return method.rawValue
+        }
+    }
+}
