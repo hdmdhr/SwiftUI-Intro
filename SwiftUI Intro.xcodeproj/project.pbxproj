@@ -15,6 +15,8 @@
 		22429AD92714FAEE002DA7CF /* SwiftUI_Intro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22429AD72714FAEE002DA7CF /* SwiftUI_Intro.xcdatamodeld */; };
 		22429AE12714FC65002DA7CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22429AE02714FC65002DA7CF /* Constants.swift */; };
 		22429AE52714FE05002DA7CF /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22429AE42714FE05002DA7CF /* APIs.swift */; };
+		22429AE727150788002DA7CF /* URL Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22429AE627150788002DA7CF /* URL Protocols.swift */; };
+		22429AE9271507BA002DA7CF /* Staging.Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22429AE8271507BA002DA7CF /* Staging.Account.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		22429ADA2714FAEE002DA7CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22429AE02714FC65002DA7CF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		22429AE42714FE05002DA7CF /* APIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
+		22429AE627150788002DA7CF /* URL Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL Protocols.swift"; sourceTree = "<group>"; };
+		22429AE8271507BA002DA7CF /* Staging.Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Staging.Account.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +96,9 @@
 		22429AE32714FDE8002DA7CF /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				22429AE627150788002DA7CF /* URL Protocols.swift */,
 				22429AE42714FE05002DA7CF /* APIs.swift */,
+				22429AE8271507BA002DA7CF /* Staging.Account.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -166,12 +172,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22429AE9271507BA002DA7CF /* Staging.Account.swift in Sources */,
 				22429AE12714FC65002DA7CF /* Constants.swift in Sources */,
 				22429AD92714FAEE002DA7CF /* SwiftUI_Intro.xcdatamodeld in Sources */,
 				22429AD62714FAEE002DA7CF /* Persistence.swift in Sources */,
 				22429ACF2714FAEC002DA7CF /* ContentView.swift in Sources */,
 				22429AE52714FE05002DA7CF /* APIs.swift in Sources */,
 				22429ACD2714FAEC002DA7CF /* SwiftUI_IntroApp.swift in Sources */,
+				22429AE727150788002DA7CF /* URL Protocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
