@@ -49,8 +49,14 @@ final class HttpClient {
         return urlSession.dataTaskPublisher(for: urlRequest)
             .mapError{ NetworkError.urlError($0) }
             .map(\.data)
-            .decode(type: Response.self, decoder: jsonDecoder)
-            .mapError{ NetworkError.decodingError($0 as? DecodingError) }
+            .tryMap{ data in
+                do {
+                    return try jsonDecoder.decode(Response.self, from: data)
+                } catch {
+                    throw NetworkError.decodingError(optError: error as? DecodingError, data: data)
+                }
+            }
+            .mapError{ ($0 as? NetworkError) ?? .unknown($0) }
             .eraseToAnyPublisher()
     }
     
