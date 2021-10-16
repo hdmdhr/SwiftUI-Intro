@@ -111,10 +111,8 @@
 		22429AE32714FDE8002DA7CF /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				22429AE627150788002DA7CF /* URL Protocols.swift */,
+				225E4BE9271B3EE500BD991E /* Protocols */,
 				22429AF2271523E0002DA7CF /* HttpMethod.swift */,
-				225E4BE0271B36C300BD991E /* AQueryItemsProvider.swift */,
-				22429AF427152A3D002DA7CF /* ABodyDataProvider.swift */,
 				22429AF0271522EA002DA7CF /* HttpClient.swift */,
 				22429AF627152BED002DA7CF /* Ext */,
 				22429AEF271522BC002DA7CF /* Endpoints */,
@@ -162,6 +160,16 @@
 				225E4BE5271B3A5500BD991E /* Places.SearchQuery.swift */,
 			);
 			path = Query;
+			sourceTree = "<group>";
+		};
+		225E4BE9271B3EE500BD991E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				22429AE627150788002DA7CF /* URL Protocols.swift */,
+				225E4BE0271B36C300BD991E /* AQueryItemsProvider.swift */,
+				22429AF427152A3D002DA7CF /* ABodyDataProvider.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
