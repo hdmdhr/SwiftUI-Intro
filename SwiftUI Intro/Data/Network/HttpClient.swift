@@ -24,8 +24,13 @@ final class HttpClient {
         
         // query
         if case .get(let queryItemsProvider) = method {
-            let queryItems = try? queryItemsProvider.queryItems(jsonEncoder: .init())
-            url.appendQueryItems(queryItems)
+            do {
+                let queryItems = try queryItemsProvider.queryItems(jsonEncoder: .init())
+                url.appendQueryItems(queryItems)
+            } catch {
+                // must be EncodingError
+                return Self.mapErrorToAnyPublisher(error: error)
+            }
         }
         
         var urlRequest = URLRequest(url: url)
@@ -33,12 +38,23 @@ final class HttpClient {
         
         // body
         if case let .mutable(bodyDataProvider, _) = method {
-            urlRequest.httpBody = try? bodyDataProvider.bodyData()
+            do {
+                urlRequest.httpBody = try bodyDataProvider.bodyData()
+            } catch {
+                // must be EncodingError
+                return Self.mapErrorToAnyPublisher(error: error)
+            }
         }
         
         return urlSession.dataTaskPublisher(for: urlRequest)
             .map(\.data)
             .decode(type: Response.self, decoder: jsonDecoder)
+            .eraseToAnyPublisher()
+    }
+    
+    
+    private static func mapErrorToAnyPublisher<Response: Decodable>(error: Error) -> AnyPublisher<Response, Error> {
+        Fail<Response, Error>(error: error)
             .eraseToAnyPublisher()
     }
     
