@@ -14,7 +14,7 @@ enum HttpRawMethod: String {
 
 
 enum HttpMethod {
-    case get(queryItemsProvider: AQueryItemProvider)
+    case get(queryItemsProvider: AQueryItemsProvider)
     case mutable(bodyDataProvider: ABodyDataProvider, method: HttpRawMethod)
     
     var httpMethod: String {

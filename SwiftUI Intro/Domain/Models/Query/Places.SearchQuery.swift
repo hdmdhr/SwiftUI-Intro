@@ -9,7 +9,7 @@ import Foundation
 
 enum Places {
     
-    struct SearchQuery: Encodable, AQueryItemProvider {
+    struct SearchQuery: Encodable, AQueryItemsProvider {
         var type: PlaceType?
         var keyword: String?
     }
