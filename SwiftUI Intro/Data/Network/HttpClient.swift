@@ -20,6 +20,14 @@ final class HttpClient {
                                                       method: HttpMethod,
                                                       jsonDecoder: JSONDecoder = .init()) -> AnyPublisher<Response, Error>
     {
+        var url = url
+        
+        // query
+        if case .get(let queryItemsProvider) = method {
+            let queryItems = try? queryItemsProvider.queryItems(jsonEncoder: .init())
+            url.appendQueryItems(queryItems)
+        }
+        
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.httpMethod
         
