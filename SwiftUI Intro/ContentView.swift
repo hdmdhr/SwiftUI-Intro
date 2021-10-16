@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -16,13 +17,19 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
 
+    @State private var bag = Set<AnyCancellable>()
+    @State private var places: [Places.Place] = []
+    
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            }
-            .onDelete(perform: deleteItems)
+        List(places, id: \.id) { place in
+            Text("\(place.name)\n\(place.address)")
         }
+//        List {
+//            ForEach(items) { item in
+//                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+//            }
+//            .onDelete(perform: deleteItems)
+//        }
         .toolbar {
             #if os(iOS)
             EditButton()
@@ -32,6 +39,24 @@ struct ContentView: View {
                 Label("Add Item", systemImage: "plus")
             }
         }
+        .onAppear(perform: {
+            let httpClient = HttpClient(urlSession: .shared)
+            httpClient.networkRequestPublisher(url: APIs.Places.searchPlaces.url,
+                                               method: .get(queryItemsProvider: Places.SearchQuery()))
+                .map{ (env: PagingEnvelop<Places.Place>) in
+                    env.data.items
+                }
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .failure(let networkError):
+                        print(networkError.description)
+                    case .finished: break
+                    }
+                }, receiveValue: { places in
+                    self.places = places
+                })
+                .store(in: &bag)
+        })
     }
 
     private func addItem() {
