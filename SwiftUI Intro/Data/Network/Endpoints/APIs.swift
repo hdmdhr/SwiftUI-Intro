@@ -9,7 +9,7 @@ import Foundation
 
 enum APIs {
     
-    enum Places: String, HasBaseUrl {
+    enum Places: String, HasBaseUrl, UrlConvertible {
         static let baseUrl: URL? = .init(string: Constants.placeApiBaseUrlString)
         
         case searchPlaces = "places"

@@ -1,0 +1,18 @@
+//
+//  Place.swift
+//  SwiftUI Intro
+//
+//  Created by 胡洞明 on 2021-10-16.
+//
+
+import Foundation
+
+extension Places {
+    
+    struct Place: Decodable {
+        let id, name, address: String
+        let type: PlaceType
+        let imageUrl: URL
+    }
+    
+}
