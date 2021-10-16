@@ -11,7 +11,7 @@ extension Places {
     
     struct Place: Decodable {
         let id, name, address: String
-        let type: PlaceType
+        let type: TypeEnum
         let imageUrl: URL
     }
     

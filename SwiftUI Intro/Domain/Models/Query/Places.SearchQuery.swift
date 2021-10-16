@@ -10,11 +10,11 @@ import Foundation
 enum Places {
     
     struct SearchQuery: Encodable, AQueryItemsProvider {
-        var type: PlaceType?
+        var type: TypeEnum?
         var keyword: String?
     }
     
-    enum PlaceType: String, Codable {
+    enum TypeEnum: String, Codable {
         case restaurant,
              gym,
              theatre,
