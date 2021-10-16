@@ -24,6 +24,7 @@
 		225E4BE1271B36C300BD991E /* AQueryItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E4BE0271B36C300BD991E /* AQueryItemsProvider.swift */; };
 		225E4BE6271B3A5500BD991E /* Places.SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E4BE5271B3A5500BD991E /* Places.SearchQuery.swift */; };
 		225E4BE8271B3DEC00BD991E /* URL+QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E4BE7271B3DEC00BD991E /* URL+QueryItem.swift */; };
+		225E4BEB271B409300BD991E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E4BEA271B409300BD991E /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		225E4BE0271B36C300BD991E /* AQueryItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQueryItemsProvider.swift; sourceTree = "<group>"; };
 		225E4BE5271B3A5500BD991E /* Places.SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.SearchQuery.swift; sourceTree = "<group>"; };
 		225E4BE7271B3DEC00BD991E /* URL+QueryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+QueryItem.swift"; sourceTree = "<group>"; };
+		225E4BEA271B409300BD991E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				225E4BE9271B3EE500BD991E /* Protocols */,
 				22429AF2271523E0002DA7CF /* HttpMethod.swift */,
+				225E4BEA271B409300BD991E /* NetworkError.swift */,
 				22429AF0271522EA002DA7CF /* HttpClient.swift */,
 				22429AF627152BED002DA7CF /* Ext */,
 				22429AEF271522BC002DA7CF /* Endpoints */,
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225E4BE6271B3A5500BD991E /* Places.SearchQuery.swift in Sources */,
+				225E4BEB271B409300BD991E /* NetworkError.swift in Sources */,
 				22429AE9271507BA002DA7CF /* Staging.Account.swift in Sources */,
 				22429AE12714FC65002DA7CF /* Constants.swift in Sources */,
 				22429AF3271523E1002DA7CF /* HttpMethod.swift in Sources */,
