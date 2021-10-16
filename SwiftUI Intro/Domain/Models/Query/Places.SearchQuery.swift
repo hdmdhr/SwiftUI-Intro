@@ -12,6 +12,8 @@ enum Places {
     struct SearchQuery: Encodable, AQueryItemsProvider {
         var type: TypeEnum?
         var keyword: String?
+        var page: Int = 0
+        var perPage: Int = 10
     }
     
     enum TypeEnum: String, Codable {
