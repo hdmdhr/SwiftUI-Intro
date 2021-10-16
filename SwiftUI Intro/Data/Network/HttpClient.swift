@@ -18,7 +18,7 @@ final class HttpClient {
     
     func networkRequestPublisher<Response: Decodable>(url: URL,
                                                       method: HttpMethod,
-                                                      jsonDecoder: JSONDecoder = .init()) -> AnyPublisher<Response, Error>
+                                                      jsonDecoder: JSONDecoder = .init()) -> AnyPublisher<Response, NetworkError>
     {
         var url = url
         
@@ -29,7 +29,7 @@ final class HttpClient {
                 url.appendQueryItems(queryItems)
             } catch {
                 // must be EncodingError
-                return Self.mapErrorToAnyPublisher(error: error)
+                return Self.mapErrorToAnyPublisher(error: .invalidRequest(innerError: error))
             }
         }
         
@@ -42,20 +42,21 @@ final class HttpClient {
                 urlRequest.httpBody = try bodyDataProvider.bodyData()
             } catch {
                 // must be EncodingError
-                return Self.mapErrorToAnyPublisher(error: error)
+                return Self.mapErrorToAnyPublisher(error: .invalidRequest(innerError: error))
             }
         }
         
         return urlSession.dataTaskPublisher(for: urlRequest)
+            .mapError{ NetworkError.urlError($0) }
             .map(\.data)
             .decode(type: Response.self, decoder: jsonDecoder)
+            .mapError{ NetworkError.decodingError($0 as? DecodingError) }
             .eraseToAnyPublisher()
     }
     
     
-    private static func mapErrorToAnyPublisher<Response: Decodable>(error: Error) -> AnyPublisher<Response, Error> {
-        Fail<Response, Error>(error: error)
-            .eraseToAnyPublisher()
+    private static func mapErrorToAnyPublisher<Response: Decodable>(error: NetworkError) -> AnyPublisher<Response, NetworkError> {
+        Fail(error: error).eraseToAnyPublisher()
     }
     
 }
