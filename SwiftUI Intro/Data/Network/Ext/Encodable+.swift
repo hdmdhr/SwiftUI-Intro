@@ -25,4 +25,11 @@ extension Encodable {
         return data
     }
     
+    
+    func toDictionary(withEncoder encoder: JSONEncoder = .init()) throws -> [String: Any]? {
+        let data = try self.toData(withEncoder: encoder)
+        return try JSONSerialization.jsonObject(with: data) as? [String : Any]
+    }
+    
+    
 }
