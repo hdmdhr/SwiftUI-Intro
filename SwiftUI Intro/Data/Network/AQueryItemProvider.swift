@@ -23,3 +23,14 @@ extension Dictionary: AQueryItemProvider where Key == String {
     }
     
 }
+
+
+
+extension AQueryItemProvider where Self: Encodable {
+    
+    func queryItems(jsonEncoder: JSONEncoder) throws -> [URLQueryItem]? {
+        let dict = try toDictionary(withEncoder: jsonEncoder)
+        return dict?.queryItems(jsonEncoder: jsonEncoder)
+    }
+    
+}
