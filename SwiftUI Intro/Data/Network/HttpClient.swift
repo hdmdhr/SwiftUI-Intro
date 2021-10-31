@@ -8,19 +8,22 @@
 import Foundation
 import Combine
 
-final class HttpClient {
-    internal init(urlSession: URLSession) {
+class HttpClient {
+    
+    internal init(urlSession: URLSession, jsonDecoder: JSONDecoder = .init()) {
         self.urlSession = urlSession
+        self.jsonDecoder = jsonDecoder
     }
     
     
     private let urlSession: URLSession
+    private let jsonDecoder: JSONDecoder
     
-    func networkRequestPublisher<Response: Decodable>(url: URL,
+    func networkRequestPublisher<Response: Decodable>(url urlConvertible: UrlConvertible,
                                                       method: HttpMethod,
-                                                      jsonDecoder: JSONDecoder = .init()) -> AnyPublisher<Response, NetworkError>
+                                                      methodJsonDecoder: JSONDecoder? = nil) -> AnyPublisher<Response, NetworkError>
     {
-        var url = url
+        var url = urlConvertible.url
         
         // query
         if case .get(let queryItemsProvider) = method {
@@ -51,7 +54,7 @@ final class HttpClient {
             .map(\.data)
             .tryMap{ data in
                 do {
-                    return try jsonDecoder.decode(Response.self, from: data)
+                    return try (methodJsonDecoder ?? self.jsonDecoder).decode(Response.self, from: data)
                 } catch {
                     throw NetworkError.decodingError(optError: error as? DecodingError, data: data)
                 }
