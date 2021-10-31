@@ -16,13 +16,21 @@ enum APIs {
     }
     
     
-    enum Staging: HasBaseUrl {
+    enum Staging: HasBaseUrl, UrlConvertible {
         static let baseUrl: URL? = .init(string: Constants.stagingApiBaseUrlString)
         
+        case verifyPhone
+        
+        var optionalUrl: URL? {
+            switch self {
+            case .verifyPhone: return Account.Phone.verify.url
+            }
+        }
+            
     }
     
     
 }
 
 
-let url: URL = APIs.Staging.Account.Phone.verify.url
+let sampleUrl: URL = APIs.Staging.Account.Phone.verify.url
