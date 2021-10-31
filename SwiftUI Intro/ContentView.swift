@@ -40,8 +40,8 @@ struct ContentView: View {
             }
         }
         .onAppear(perform: {
-            let httpClient = HttpClient(urlSession: .shared)
-            httpClient.networkRequestPublisher(url: APIs.Places.searchPlaces.url,
+            let httpClient = EndpointHttpClient(urlSession: .shared, endpointType: APIs.Places.self)
+            httpClient.networkRequestPublisher(endpoint: .searchPlaces,
                                                method: .get(queryItemsProvider: Places.SearchQuery()))
                 .map{ (env: PagingEnvelop<Places.Place>) in
                     env.data.items
