@@ -27,7 +27,7 @@ class HttpClient {
         // query
         if case .get(let queryItemsProvider) = method {
             do {
-                let queryItems = try queryItemsProvider.queryItems(jsonEncoder: .init())
+                let queryItems = try queryItemsProvider.queryItems()
                 url.appendQueryItems(queryItems)
             } catch {
                 // must be EncodingError

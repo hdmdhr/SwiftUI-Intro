@@ -18,10 +18,9 @@ class EndpointHttpClient<Endpoint: UrlConvertible>: HttpClient {
     
     
     func networkRequestPublisher<Response: Decodable>(endpoint: Endpoint,
-                                                      method: HttpMethod,
-                                                      methodJsonDecoder: JSONDecoder? = nil) -> AnyPublisher<Response, NetworkError>
+                                                      method: HttpMethod) -> AnyPublisher<Response, NetworkError>
     {
-        super.networkRequestPublisher(url: endpoint.url, method: method, methodJsonDecoder: methodJsonDecoder)
+        super.networkRequestPublisher(url: endpoint.url, method: method)
     }
     
 }

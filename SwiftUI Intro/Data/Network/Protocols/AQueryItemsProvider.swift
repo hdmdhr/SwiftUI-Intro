@@ -9,16 +9,24 @@ import Foundation
 
 protocol AQueryItemsProvider {
     
-    func queryItems(jsonEncoder: JSONEncoder) throws -> [URLQueryItem]?
+    var queryJsonEncoder: JSONEncoder? { get }
+    
+    func queryItems() throws -> [URLQueryItem]
+    
+}
+
+extension AQueryItemsProvider {
+    
+    var queryJsonEncoder: JSONEncoder? { .init() }
     
 }
 
 
 extension Dictionary: AQueryItemsProvider where Key == String {
     
-    func queryItems(jsonEncoder: JSONEncoder = .init()) -> [URLQueryItem]? {
+    func queryItems() -> [URLQueryItem] {
         reduce(into: [URLQueryItem]()) { acc, keyValue in
-            acc?.append(URLQueryItem(name: keyValue.key, value: "\(keyValue.value)"))
+            acc.append(URLQueryItem(name: keyValue.key, value: "\(keyValue.value)"))
         }
     }
     
@@ -28,9 +36,11 @@ extension Dictionary: AQueryItemsProvider where Key == String {
 
 extension AQueryItemsProvider where Self: Encodable {
     
-    func queryItems(jsonEncoder: JSONEncoder) throws -> [URLQueryItem]? {
-        let dict = try toDictionary(withEncoder: jsonEncoder)
-        return dict?.queryItems(jsonEncoder: jsonEncoder)
+    func queryItems() throws -> [URLQueryItem] {
+        guard let encoder = queryJsonEncoder else { return [] }
+        
+        let dict = try toDictionary(withEncoder: encoder)
+        return dict?.queryItems() ?? []
     }
     
 }
