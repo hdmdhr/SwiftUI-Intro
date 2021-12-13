@@ -11,7 +11,7 @@ enum NetworkError: Error, CustomStringConvertible {
     
     /// Inner error is very likely to be an `EncodingError`
     case invalidRequest(innerError: Error)
-    case decodingError(optError: DecodingError?, data: Data)
+    case decodingError(_ error: DecodingError, data: Data)
     case urlError(URLError)
     case unknown(Error)
     
@@ -24,11 +24,9 @@ enum NetworkError: Error, CustomStringConvertible {
             
             return "Invalid request"
             
-        case let .decodingError(optDecodingError, data):
-            if let decodingError = optDecodingError {
-                print(decodingError)
-            }
-            
+        case let .decodingError(decodingError, data):
+            print(decodingError)
+        
             let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
             let message = jsonObject?["message"] as? String
             

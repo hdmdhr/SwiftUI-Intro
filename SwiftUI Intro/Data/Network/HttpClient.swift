@@ -20,8 +20,7 @@ class HttpClient {
     private let jsonDecoder: JSONDecoder
     
     func networkRequestPublisher<Response: Decodable>(url urlConvertible: UrlConvertible,
-                                                      method: HttpMethod,
-                                                      methodJsonDecoder: JSONDecoder? = nil) -> AnyPublisher<Response, NetworkError>
+                                                      method: HttpMethod) -> AnyPublisher<Response, NetworkError>
     {
         var url = urlConvertible.url
         
@@ -52,11 +51,15 @@ class HttpClient {
         return urlSession.dataTaskPublisher(for: urlRequest)
             .mapError{ NetworkError.urlError($0) }
             .map(\.data)
-            .tryMap{ data in
+            .tryMap{ [self] data in
                 do {
-                    return try (methodJsonDecoder ?? self.jsonDecoder).decode(Response.self, from: data)
+                    return try jsonDecoder.decode(Response.self, from: data)
+                } catch let decodingError as DecodingError {
+                    throw NetworkError.decodingError(decodingError, data: data)
+                } catch let urlError as URLError {
+                    throw NetworkError.urlError(urlError)
                 } catch {
-                    throw NetworkError.decodingError(optError: error as? DecodingError, data: data)
+                    throw NetworkError.unknown(error)
                 }
             }
             .mapError{ ($0 as? NetworkError) ?? .unknown($0) }
