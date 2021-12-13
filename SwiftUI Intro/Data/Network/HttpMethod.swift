@@ -14,15 +14,15 @@ enum HttpRawMethod: String {
 
 
 enum HttpMethod {
-    case get(queryItemsProvider: AQueryItemsProvider)
-    case mutable(bodyDataProvider: ABodyDataProvider, method: HttpRawMethod)
+    case get(queryItemsProvider: AQueryItemsProvider?)
+    case mutable(method: HttpRawMethod, bodyDataProvider: ABodyDataProvider?)
     
-    var httpMethod: String {
+    var httpRawMethod: HttpRawMethod {
         switch self {
         case .get:
-            return HttpRawMethod.GET.rawValue
-        case let .mutable(_, method):
-            return method.rawValue
+            return HttpRawMethod.GET
+        case let .mutable(method, _):
+            return method
         }
     }
 }

@@ -25,9 +25,9 @@ class HttpClient {
         var url = urlConvertible.url
         
         // query
-        if case .get(let queryItemsProvider) = method {
+        if case .get(let queryItemsProvider) = method, let provider = queryItemsProvider {
             do {
-                let queryItems = try queryItemsProvider.queryItems()
+                let queryItems = try provider.queryItems()
                 url.appendQueryItems(queryItems)
             } catch {
                 // must be EncodingError
@@ -36,12 +36,12 @@ class HttpClient {
         }
         
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = method.httpMethod
+        urlRequest.httpMethod = method.httpRawMethod.rawValue
         
         // body
-        if case let .mutable(bodyDataProvider, _) = method {
+        if case let .mutable(_, bodyDataProvider) = method, let provider = bodyDataProvider {
             do {
-                urlRequest.httpBody = try bodyDataProvider.bodyData()
+                urlRequest.httpBody = try provider.bodyData()
             } catch {
                 // must be EncodingError
                 return Self.mapErrorToAnyPublisher(error: .invalidRequest(innerError: error))

@@ -21,6 +21,9 @@
 		22429AF3271523E1002DA7CF /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22429AF2271523E0002DA7CF /* HttpMethod.swift */; };
 		22429AF527152A3D002DA7CF /* ABodyDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22429AF427152A3D002DA7CF /* ABodyDataProvider.swift */; };
 		22429AF827152BFC002DA7CF /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22429AF727152BFC002DA7CF /* Encodable+.swift */; };
+		22440FE92767AECD002BE3CD /* AsyncHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22440FE82767AECD002BE3CD /* AsyncHttpClient.swift */; };
+		22440FEC2767C4A2002BE3CD /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22440FEB2767C49D002BE3CD /* Int+.swift */; };
+		22440FEE2767C4BB002BE3CD /* Data+PrettyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22440FED2767C4BB002BE3CD /* Data+PrettyString.swift */; };
 		22529DEC272F4B0E00720CB8 /* URL+UrlConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22529DEB272F4B0E00720CB8 /* URL+UrlConvertible.swift */; };
 		22529DEE272F4C4500720CB8 /* EndpointHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22529DED272F4C4500720CB8 /* EndpointHttpClient.swift */; };
 		225E4BE1271B36C300BD991E /* AQueryItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E4BE0271B36C300BD991E /* AQueryItemsProvider.swift */; };
@@ -49,6 +52,9 @@
 		22429AF2271523E0002DA7CF /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		22429AF427152A3D002DA7CF /* ABodyDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABodyDataProvider.swift; sourceTree = "<group>"; };
 		22429AF727152BFC002DA7CF /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		22440FE82767AECD002BE3CD /* AsyncHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncHttpClient.swift; sourceTree = "<group>"; };
+		22440FEB2767C49D002BE3CD /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
+		22440FED2767C4BB002BE3CD /* Data+PrettyString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PrettyString.swift"; sourceTree = "<group>"; };
 		22529DEB272F4B0E00720CB8 /* URL+UrlConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+UrlConvertible.swift"; sourceTree = "<group>"; };
 		22529DED272F4C4500720CB8 /* EndpointHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointHttpClient.swift; sourceTree = "<group>"; };
 		225E4BE0271B36C300BD991E /* AQueryItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQueryItemsProvider.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 				22429ACC2714FAEC002DA7CF /* SwiftUI_IntroApp.swift */,
 				22429ACE2714FAEC002DA7CF /* ContentView.swift */,
 				22429AE02714FC65002DA7CF /* Constants.swift */,
+				22440FEA2767C497002BE3CD /* Ext */,
 				225E4BE2271B3A3500BD991E /* Domain */,
 				22429AE22714FDBD002DA7CF /* Data */,
 				22429AD02714FAEE002DA7CF /* Assets.xcassets */,
@@ -126,6 +133,7 @@
 				225E4BE9271B3EE500BD991E /* Protocols */,
 				22429AF2271523E0002DA7CF /* HttpMethod.swift */,
 				225E4BEA271B409300BD991E /* NetworkError.swift */,
+				22440FE82767AECD002BE3CD /* AsyncHttpClient.swift */,
 				22429AF0271522EA002DA7CF /* HttpClient.swift */,
 				22529DED272F4C4500720CB8 /* EndpointHttpClient.swift */,
 				22429AF627152BED002DA7CF /* Ext */,
@@ -149,6 +157,15 @@
 				22429AF727152BFC002DA7CF /* Encodable+.swift */,
 				225E4BE7271B3DEC00BD991E /* URL+QueryItem.swift */,
 				22529DEB272F4B0E00720CB8 /* URL+UrlConvertible.swift */,
+				22440FED2767C4BB002BE3CD /* Data+PrettyString.swift */,
+			);
+			path = Ext;
+			sourceTree = "<group>";
+		};
+		22440FEA2767C497002BE3CD /* Ext */ = {
+			isa = PBXGroup;
+			children = (
+				22440FEB2767C49D002BE3CD /* Int+.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -270,6 +287,7 @@
 				225E4BE6271B3A5500BD991E /* Places.SearchQuery.swift in Sources */,
 				22668116271B634A007B1642 /* Envelop.swift in Sources */,
 				225E4BEB271B409300BD991E /* NetworkError.swift in Sources */,
+				22440FE92767AECD002BE3CD /* AsyncHttpClient.swift in Sources */,
 				22429AE9271507BA002DA7CF /* Staging.Account.swift in Sources */,
 				22429AE12714FC65002DA7CF /* Constants.swift in Sources */,
 				22429AF3271523E1002DA7CF /* HttpMethod.swift in Sources */,
@@ -277,6 +295,7 @@
 				22429AF827152BFC002DA7CF /* Encodable+.swift in Sources */,
 				225E4BE8271B3DEC00BD991E /* URL+QueryItem.swift in Sources */,
 				22429AD92714FAEE002DA7CF /* SwiftUI_Intro.xcdatamodeld in Sources */,
+				22440FEC2767C4A2002BE3CD /* Int+.swift in Sources */,
 				22429AF527152A3D002DA7CF /* ABodyDataProvider.swift in Sources */,
 				22668114271B6231007B1642 /* Place.swift in Sources */,
 				22429AD62714FAEE002DA7CF /* Persistence.swift in Sources */,
@@ -287,6 +306,7 @@
 				22429ACF2714FAEC002DA7CF /* ContentView.swift in Sources */,
 				22429AE52714FE05002DA7CF /* APIs.swift in Sources */,
 				22429ACD2714FAEC002DA7CF /* SwiftUI_IntroApp.swift in Sources */,
+				22440FEE2767C4BB002BE3CD /* Data+PrettyString.swift in Sources */,
 				22429AE727150788002DA7CF /* URL Protocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,7 +440,7 @@
 				DEVELOPMENT_TEAM = 96U63CGYMR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "SwiftUI Intro/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -442,7 +462,7 @@
 				DEVELOPMENT_TEAM = 96U63CGYMR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "SwiftUI Intro/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
