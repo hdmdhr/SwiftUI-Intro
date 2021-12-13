@@ -23,6 +23,7 @@
 		22440FE92767AECD002BE3CD /* AsyncHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22440FE82767AECD002BE3CD /* AsyncHttpClient.swift */; };
 		22440FEC2767C4A2002BE3CD /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22440FEB2767C49D002BE3CD /* Int+.swift */; };
 		22440FEE2767C4BB002BE3CD /* Data+PrettyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22440FED2767C4BB002BE3CD /* Data+PrettyString.swift */; };
+		22440FF62767DD3E002BE3CD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22440FF52767DD3E002BE3CD /* ContentViewModel.swift */; };
 		22529DEC272F4B0E00720CB8 /* URL+UrlConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22529DEB272F4B0E00720CB8 /* URL+UrlConvertible.swift */; };
 		225E4BE1271B36C300BD991E /* AQueryItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E4BE0271B36C300BD991E /* AQueryItemsProvider.swift */; };
 		225E4BE6271B3A5500BD991E /* Places.SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E4BE5271B3A5500BD991E /* Places.SearchQuery.swift */; };
@@ -52,6 +53,7 @@
 		22440FE82767AECD002BE3CD /* AsyncHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncHttpClient.swift; sourceTree = "<group>"; };
 		22440FEB2767C49D002BE3CD /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		22440FED2767C4BB002BE3CD /* Data+PrettyString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PrettyString.swift"; sourceTree = "<group>"; };
+		22440FF52767DD3E002BE3CD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		22529DEB272F4B0E00720CB8 /* URL+UrlConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+UrlConvertible.swift"; sourceTree = "<group>"; };
 		225E4BE0271B36C300BD991E /* AQueryItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AQueryItemsProvider.swift; sourceTree = "<group>"; };
 		225E4BE5271B3A5500BD991E /* Places.SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.SearchQuery.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				22429ACC2714FAEC002DA7CF /* SwiftUI_IntroApp.swift */,
 				22429ACE2714FAEC002DA7CF /* ContentView.swift */,
+				22440FF52767DD3E002BE3CD /* ContentViewModel.swift */,
 				22429AE02714FC65002DA7CF /* Constants.swift */,
 				22440FEA2767C497002BE3CD /* Ext */,
 				225E4BE2271B3A3500BD991E /* Domain */,
@@ -290,6 +293,7 @@
 				22429AD92714FAEE002DA7CF /* SwiftUI_Intro.xcdatamodeld in Sources */,
 				22440FEC2767C4A2002BE3CD /* Int+.swift in Sources */,
 				22429AF527152A3D002DA7CF /* ABodyDataProvider.swift in Sources */,
+				22440FF62767DD3E002BE3CD /* ContentViewModel.swift in Sources */,
 				22668114271B6231007B1642 /* Place.swift in Sources */,
 				22429AD62714FAEE002DA7CF /* Persistence.swift in Sources */,
 				22668118271B637B007B1642 /* PagingEnvelop.swift in Sources */,

@@ -13,7 +13,7 @@ struct SwiftUI_IntroApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(vm: .init(httpClient: AsyncHttpClient(urlSession: .shared)))
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

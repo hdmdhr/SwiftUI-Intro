@@ -9,22 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var places: [Place] = []
+    @StateObject var vm: ViewModel
     
     var body: some View {
-        List(places, id: \.id) { place in
-            Text("\(place.name)\n\(place.address)")
+        
+        NavigationView {
+            ZStack {
+                List(vm.places, id: \.id) { place in
+                    Text("\(place.name)\n\(place.address)")
+                }
+                .searchable(text: $vm.keyword)
+
+                if vm.isLoading {
+                    ProgressView("Loading...")
+                        .progressViewStyle(.circular)
+                }                
+            }
+            .navigationTitle("Places")
         }
-        .task {
-            let httpClient = AsyncHttpClient(urlSession: .shared)
-            
-            guard let response: PagingEnvelop<Place> = try? await httpClient.request(
-                url: APIs.Places.searchPlaces,
-                method: .get(queryItemsProvider: Places.SearchQuery()))
-            else { return }
-            
-            self.places = response.data.items
-        }
+        
     }
 
 }
@@ -32,6 +35,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(vm: ContentView.ViewModel(httpClient: AsyncHttpClient(urlSession: .shared)))
     }
 }
