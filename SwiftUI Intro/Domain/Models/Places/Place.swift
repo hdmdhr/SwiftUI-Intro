@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias Place = Places.Place
+
 extension Places {
     
     struct Place: Decodable {

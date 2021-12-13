@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var places: [Places.Place] = []
+    @State private var places: [Place] = []
     
     var body: some View {
         List(places, id: \.id) { place in
@@ -18,7 +18,7 @@ struct ContentView: View {
         .task {
             let httpClient = AsyncHttpClient(urlSession: .shared)
             
-            guard let response: PagingEnvelop<Places.Place> = try? await httpClient.request(
+            guard let response: PagingEnvelop<Place> = try? await httpClient.request(
                 url: APIs.Places.searchPlaces,
                 method: .get(queryItemsProvider: Places.SearchQuery()))
             else { return }
