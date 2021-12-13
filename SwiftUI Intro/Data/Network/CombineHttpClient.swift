@@ -1,5 +1,5 @@
 //
-//  HttpClient.swift
+//  CombineHttpClient.swift
 //  SwiftUI Intro
 //
 //  Created by 胡洞明 on 2021-10-11.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class HttpClient {
+class CombineHttpClient {
     
     internal init(urlSession: URLSession, jsonDecoder: JSONDecoder = .init()) {
         self.urlSession = urlSession

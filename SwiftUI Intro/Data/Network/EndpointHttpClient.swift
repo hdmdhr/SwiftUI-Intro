@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 
-/// Subclass of `HttpClient`, associated with a specific type of endpoint
-class EndpointHttpClient<Endpoint: UrlConvertible>: HttpClient {
+/// Subclass of `CombineHttpClient`, associated with a specific type of endpoint
+class EndpointHttpClient<Endpoint: UrlConvertible>: CombineHttpClient {
     
     internal init(urlSession: URLSession, endpointType: Endpoint.Type, jsonDecoder: JSONDecoder = .init()) {
         
