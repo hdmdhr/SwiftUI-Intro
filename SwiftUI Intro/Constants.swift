@@ -9,7 +9,7 @@ import Foundation
 
 enum Constants {
     
-    static let placeApiBaseUrlString = "https://sample-api.azure-api.net/sample/"
+    static let placeApiBaseUrlString = "https://sample-api-new.herokuapp.com/"
     
     static let stagingApiBaseUrlString = "https://api.staging.nudge.vogdevelopment.com/api/"
     
