@@ -35,6 +35,7 @@ struct ContentView: View {
 struct PlaceRow: View {
     
     let place: Place
+    var isPreview = false
     
     var body: some View {
         VStack(alignment: .center) {
@@ -62,19 +63,23 @@ struct PlaceRow: View {
                         Circle().stroke(.white, lineWidth: 4)
                     }
                     .shadow(radius: 7)
+                    .padding(.vertical)
             } placeholder: {
-                Image(systemName: "applelogo")
-                    .resizable()
-                    .scaledToFill()
-                    .background(Color.gray)
-                    .clipShape(Circle())
-                    .overlay {
-                        Circle().stroke(.white, lineWidth: 4)
-                    }
-                    .shadow(radius: 7)
-                    .frame(width: 200, height: 200, alignment: .center)
-//                ProgressView()
-//                    .frame(width: 200, height: 200, alignment: .center)
+                if isPreview {
+                    Image(systemName: "applelogo")
+                        .resizable()
+                        .scaledToFill()
+                        .background(Color.gray)
+                        .clipShape(Circle())
+                        .overlay {
+                            Circle().stroke(.white, lineWidth: 4)
+                        }
+                        .shadow(radius: 7)
+                        .frame(width: 200, height: 200, alignment: .center)
+                } else {
+                    ProgressView()
+                        .frame(width: 200, height: 200, alignment: .center)
+                }
             }
         }
         .padding()
@@ -88,11 +93,13 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView(vm: ContentView.FakeViewModel(httpClient: AsyncHttpClient(urlSession: .shared)))
             
-            PlaceRow(place: ContentView.FakeViewModel.randomPlace())
+            PlaceRow(place: ContentView.FakeViewModel.randomPlace(),
+                     isPreview: true)
                 .previewDisplayName("Light mode place row")
                 .previewLayout(.sizeThatFits)
             
-            PlaceRow(place: ContentView.FakeViewModel.randomPlace())
+            PlaceRow(place: ContentView.FakeViewModel.randomPlace(),
+                     isPreview: true)
                 .previewDisplayName("Dark mode place row")
                 .preferredColorScheme(.dark)
                 .previewLayout(.sizeThatFits)
