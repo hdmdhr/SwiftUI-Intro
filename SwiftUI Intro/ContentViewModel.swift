@@ -12,23 +12,12 @@ extension ContentView {
     
     class FakeViewModel: ViewModel {
         
-        private static let randomImageUrl = URL(string: "https://picsum.photos/id/1079/300/200")!
-        
-        static func randomPlace() -> Place {
-            let id = String(Int.random(in: 1...100))
-            let place = Place(id: id, name: "Place \(id)", address: "some place", type: .casino, imageUrl: randomImageUrl)
-            
-            return place
-        }
-        
         required init(httpClient: AsyncHttpClient) {
             super.init(httpClient: httpClient)
             
             Task {
                 await MainActor.run {
-                    places = (1...5).map { id in
-                            .init(id: String(id), name: "Place \(id)", address: "somewhere", type: .casino, imageUrl: Self.randomImageUrl)
-                    }
+                    places = Place.randomPlaces(count: 10)
                 }
             }
         }

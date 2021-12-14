@@ -16,7 +16,9 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 List(vm.places, id: \.id) { place in
-                    PlaceRow(place: place)
+                    NavigationLink(destination: PlaceRow(place: place)) {
+                        PlaceRow(place: place)
+                    }
                 }
                 .searchable(text: $vm.keyword)
 
@@ -66,7 +68,7 @@ struct PlaceRow: View {
                     .padding(.vertical)
             } placeholder: {
                 if isPreview {
-                    Image(systemName: "applelogo")
+                    Image(systemName: "photo")
                         .resizable()
                         .scaledToFill()
                         .background(Color.gray)
@@ -93,12 +95,12 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView(vm: ContentView.FakeViewModel(httpClient: AsyncHttpClient(urlSession: .shared)))
             
-            PlaceRow(place: ContentView.FakeViewModel.randomPlace(),
+            PlaceRow(place: Place.randomPlace(),
                      isPreview: true)
                 .previewDisplayName("Light mode place row")
                 .previewLayout(.sizeThatFits)
             
-            PlaceRow(place: ContentView.FakeViewModel.randomPlace(),
+            PlaceRow(place: Place.randomPlace(),
                      isPreview: true)
                 .previewDisplayName("Dark mode place row")
                 .preferredColorScheme(.dark)
