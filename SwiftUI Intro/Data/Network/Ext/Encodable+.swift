@@ -11,13 +11,11 @@ import Foundation
 extension Encodable {
     
     func toData(withEncoder encoder: JSONEncoder = .init()) throws -> Data {
+        encoder.outputFormatting = .prettyPrinted
         let data = try encoder.encode(self)
         
         #if DEBUG
-        if let jsonObj = try? JSONSerialization.jsonObject(with: data),
-           let jsonData = try? JSONSerialization.data(withJSONObject: jsonObj, options: .prettyPrinted),
-           let jsonString = String(data: jsonData, encoding: .utf8)
-        {
+        if let jsonString = String(data: data, encoding: .utf8) {
             print("Encoded: ", jsonString)
         }
         #endif
