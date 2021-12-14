@@ -37,8 +37,21 @@ struct PlaceRow: View {
     let place: Place
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(place.name)\n\(place.address)")
+        VStack(alignment: .center) {
+            HStack {
+                Text(place.name)
+                
+                Spacer()
+                
+                Text(place.type.rawValue)
+                    .foregroundColor(.secondary)
+            }
+            
+            Text(place.address)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .padding(.top, 2)
+                .frame(maxWidth: .infinity, alignment: .leading)
             
             AsyncImage(url: place.imageUrl) { image in
                 image.resizable()
@@ -50,10 +63,21 @@ struct PlaceRow: View {
                     }
                     .shadow(radius: 7)
             } placeholder: {
-                ProgressView()
+                Image(systemName: "applelogo")
+                    .resizable()
+                    .scaledToFill()
+                    .background(Color.gray)
+                    .clipShape(Circle())
+                    .overlay {
+                        Circle().stroke(.white, lineWidth: 4)
+                    }
+                    .shadow(radius: 7)
                     .frame(width: 200, height: 200, alignment: .center)
+//                ProgressView()
+//                    .frame(width: 200, height: 200, alignment: .center)
             }
         }
+        .padding()
     }
     
 }
@@ -65,7 +89,13 @@ struct ContentView_Previews: PreviewProvider {
             ContentView(vm: ContentView.FakeViewModel(httpClient: AsyncHttpClient(urlSession: .shared)))
             
             PlaceRow(place: ContentView.FakeViewModel.randomPlace())
-                .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/200.0/*@END_MENU_TOKEN@*/))
+                .previewDisplayName("Light mode place row")
+                .previewLayout(.sizeThatFits)
+            
+            PlaceRow(place: ContentView.FakeViewModel.randomPlace())
+                .previewDisplayName("Dark mode place row")
+                .preferredColorScheme(.dark)
+                .previewLayout(.sizeThatFits)
         }
     }
 }
