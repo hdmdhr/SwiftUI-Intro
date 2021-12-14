@@ -16,7 +16,7 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 List(vm.places, id: \.id) { place in
-                    Text("\(place.name)\n\(place.address)")
+                    PlaceRow(place: place)
                 }
                 .searchable(text: $vm.keyword)
 
@@ -32,9 +32,40 @@ struct ContentView: View {
 
 }
 
+struct PlaceRow: View {
+    
+    let place: Place
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("\(place.name)\n\(place.address)")
+            
+            AsyncImage(url: place.imageUrl) { image in
+                image.resizable()
+                    .scaledToFill()
+                    .background(Color.gray)
+                    .clipShape(Circle())
+                    .overlay {
+                        Circle().stroke(.white, lineWidth: 4)
+                    }
+                    .shadow(radius: 7)
+            } placeholder: {
+                ProgressView()
+                    .frame(width: 200, height: 200, alignment: .center)
+            }
+        }
+    }
+    
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(vm: ContentView.ViewModel(httpClient: AsyncHttpClient(urlSession: .shared)))
+        Group {
+            ContentView(vm: ContentView.FakeViewModel(httpClient: AsyncHttpClient(urlSession: .shared)))
+            
+            PlaceRow(place: ContentView.FakeViewModel.randomPlace())
+                .previewLayout(.fixed(width: /*@START_MENU_TOKEN@*/300.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/200.0/*@END_MENU_TOKEN@*/))
+        }
     }
 }
